@@ -40,4 +40,8 @@ func main() {
 
 	f := func(s string) int { return 5 }
 	receiveFunction(f)
+
+	func(s string) {
+		fmt.Println(s)
+	}("I'm an anonymous function!")
 }
