@@ -28,9 +28,10 @@ func returnMultiple() (int, bool, string) {
 	return value, isSomething, s
 }
 
-func receiveFunction(f fn) {
+func receiveFunction(f fn) fn {
 	number := f("Try me!")
 	fmt.Println(number)
+	return f
 }
 
 func main() {
