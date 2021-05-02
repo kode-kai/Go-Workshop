@@ -15,14 +15,18 @@ type Employees []Employee
 func declarations() {
 	// Long Way
 	var employeeSenior Employee
+
 	employeeSenior = Employee{
 		name:                 "Antonio",
 		lastName:             "Feregrino",
-		age:                  39,
+		age:                  29,
 		programmingLanguages: []string{"C#", "Python"},
 		isSenior:             true,
 	}
 	fmt.Println(employeeSenior)
+	s := fmt.Sprintf("You are: %v %v\n", employeeSenior.name, employeeSenior.lastName)
+	// fmt.Printf("%v %v", employeeSenior)
+	fmt.Println(s)
 
 	// Short way
 	employee := Employee{
@@ -83,6 +87,8 @@ func assignNameAsReference(e *Employee) {
 }
 
 func main() {
+
+	// declarations()
 	// employees := pointers()
 	// fmt.Println(employees)
 

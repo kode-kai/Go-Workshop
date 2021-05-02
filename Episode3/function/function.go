@@ -5,15 +5,16 @@ import (
 	"strconv"
 )
 
-type fn func(string) int
-
 func function() {
 	fmt.Println("This is just a function!")
-	return
 }
 
 func receiveReturn(a int) int {
 	return a
+}
+
+func receiveReturn2(a, b int, isOn, isOff bool) int {
+	return a + b
 }
 
 func returnMultiple() (int, bool, string) {
@@ -28,21 +29,36 @@ func returnMultiple() (int, bool, string) {
 	return value, isSomething, s
 }
 
+type fn func(string) int
+
 func receiveFunction(f fn) fn {
-	number := f("Try me!")
+	number := f("213")
 	fmt.Println(number)
 	return f
 }
 
 func main() {
 	// function()
+
 	// receiveReturn(12)
+	// receiveReturn2(12, 24)
 	// returnMultiple()
 
-	f := func(s string) int { return 5 }
-	receiveFunction(f)
+	f := func(s string) int {
+		number, err := strconv.Atoi(s)
 
-	func(s string) {
-		fmt.Println(s)
-	}("I'm an anonymous function!")
+		if err != nil {
+			fmt.Println(err.Error())
+			fmt.Println("Hubo un error en la conversion")
+		}
+
+		return number
+	}
+	f1 := receiveFunction(f)
+	f1("Try me again")
+	// fmt.Println(n)
+	// s := "I'm an anonymous function!"
+	// func(s string) {
+	// 	fmt.Println(s)
+	// }(s)
 }
