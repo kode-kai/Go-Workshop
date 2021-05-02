@@ -28,15 +28,16 @@ func anyType(a ...interface{}) {
 }
 
 func main() {
-	// numbers := []int{1, 3, 5, 7}
-	// anyType(numbers)
+	numbers := []int{1, 3, 5, 7}
+	anyType(numbers)
+	fmt.Println("", "asasa", 23)
 
-	f := NewF()
-	c := New(f)
-	sum := c.Add(3, 8)
-	sqrt := c.Sqrt(25)
-	fmt.Println(sum)
-	fmt.Println(sqrt)
+	// f := NewF()
+	// c := New(f)
+	// sum := c.Add(3, 8)
+	// sqrt := c.Sqrt(25)
+	// fmt.Println(sum)
+	// fmt.Println(sqrt)
 }
 
 func (c *Calculator) Add(a int, b int) int {
