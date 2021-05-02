@@ -10,13 +10,17 @@ type RandomNumber struct {
 	b int
 }
 
+var items int = 10
+
 func main() {
-	jobs := make(chan RandomNumber, 10)
-	results := make(chan int, 10)
+	jobs := make(chan RandomNumber, items)
+	results := make(chan int, items)
 
+	// TODO watch the activity monitor
 	go worker(jobs, results)
+	// Create more goroutines to watch the performance
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i < items; i++ {
 		random := RandomNumber{
 			a: rand.Intn(100),
 			b: rand.Intn(100),
@@ -26,11 +30,10 @@ func main() {
 	}
 	close(jobs)
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i < items; i++ {
 		r := <-results
 		fmt.Println("GCD is: ", r)
 	}
-
 }
 
 func worker(jobs <-chan RandomNumber, results chan<- int) {
